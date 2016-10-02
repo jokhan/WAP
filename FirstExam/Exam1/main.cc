@@ -60,7 +60,7 @@ int main()
 
 	//sort small cubes, and put the bigger first
 	sort( smallCubes, smallCubes + N, compare );
-	int putCubesNum = 0;     //the number of smaller cubes which are put
+	//int putCubesNum = 0;     //the number of smaller cubes which are put
 	for( int i = 0; i < N; ++ i ) {
 		int target = (P - smallCubes[i].smallCube.nums.at(0)) % P;
 		int count = mapNums.count( target );
@@ -69,6 +69,7 @@ int main()
 			if( isRightLocation( bigCube, smallCubes[i].smallCube, iter->second,P ) ) {
 				putSmallCube( bigCube, smallCubes[i].smallCube, iter->second );
 				posOfSmall[ smallCubes[i].index ] = iter->second;
+				//vectorToMap( bigCube, mapNums );
 				break;
 			}
 		}
@@ -89,12 +90,12 @@ int main()
 		cout << i << endl;
 		smallerCube[i].printCube();
 	}
+	*/
 	// output map
 	cout << "multimap:" << endl;
 	for( iter = mapNums.begin(); iter != mapNums.end(); ++ iter )
 		cout << iter->first << ":" << iter->second << endl;
 	cout << endl;
-	*/
 	//output solution
 	for( int i = 0; i < N; ++ i ) {
 		int index1,index2,index3;
@@ -107,7 +108,7 @@ int main()
 
 void MagicCube::printCube() 
 {
-	for( int i = 0; i < nums.size(); ++ i ) {
+	for( unsigned int i = 0; i < nums.size(); ++ i ) {
 		int index1,index2,index3;
 		locToPos( i, index1, index2, index3 );
 		cout << "[" << index1 << "," << index2 << "," << index3 << "]";
@@ -142,7 +143,7 @@ void MagicCube::locToPos( const int &location, int &index1, int &index2, int &in
 
 bool MagicCube::isAllZeros()
 {
-	for( int i = 0; i < nums.size(); ++ i ) {
+	for( unsigned int i = 0; i < nums.size(); ++ i ) {
 		if( nums.at(i) != 0 )
 			return false;
 	}
@@ -180,7 +181,8 @@ bool isRightLocation( const MagicCube &bigCube, const MagicCube &smallCube, int 
 
 void vectorToMap( const MagicCube &bigCube, multimap<int,int> &mapNums )
 {
-	for( int i = 0; i < bigCube.nums.size(); ++ i )
+	mapNums.clear();
+	for( unsigned int i = 0; i < bigCube.nums.size(); ++ i )
 	{
 		mapNums.insert( pair<int,int>( bigCube.nums.at(i), i ) );
 	}
