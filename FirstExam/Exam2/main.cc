@@ -60,7 +60,6 @@ int main()
 	int index;
 	for( int i = 0; i < M; ++ i ) {
 		index = maxMapHead( mapHead );
-		cout << "index: " << index << endl;
 		answer += mapHead[index].totalSati;
 		delHead( mapHead, index, S );
 	}

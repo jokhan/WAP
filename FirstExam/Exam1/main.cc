@@ -90,12 +90,12 @@ int main()
 		cout << i << endl;
 		smallerCube[i].printCube();
 	}
-	*/
 	// output map
 	cout << "multimap:" << endl;
 	for( iter = mapNums.begin(); iter != mapNums.end(); ++ iter )
 		cout << iter->first << ":" << iter->second << endl;
 	cout << endl;
+	*/
 	//output solution
 	for( int i = 0; i < N; ++ i ) {
 		int index1,index2,index3;
